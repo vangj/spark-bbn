@@ -1,0 +1,31 @@
+[ {
+  "id" : 0,
+  "name" : "a",
+  "values" : [ {
+    "value" : "true",
+    "count" : 100
+  }, {
+    "value" : "false",
+    "count" : 200
+  } ]
+}, {
+  "id" : 1,
+  "name" : "b",
+  "values" : [ {
+    "value" : "male",
+    "count" : 1050
+  }, {
+    "value" : "female",
+    "count" : 2300
+  } ]
+}, {
+  "id" : 2,
+  "name" : "c",
+  "values" : [ {
+    "value" : "on",
+    "count" : 1020
+  }, {
+    "value" : "off",
+    "count" : 2200
+  } ]
+} ]

@@ -1,0 +1,11 @@
+{
+  "id" : 0,
+  "name" : "a",
+  "values" : [ {
+    "value" : "true",
+    "count" : 100
+  }, {
+    "value" : "false",
+    "count" : 200
+  } ]
+}

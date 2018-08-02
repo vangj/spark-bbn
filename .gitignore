@@ -1,0 +1,4 @@
+target/
+.idea/
+spark-warehouse/
+spark-bbn.iml
