@@ -1,0 +1,53 @@
+#!/bin/bash
+# chkconfig: 345 85 15
+# description: Hadoop YARN
+### BEGIN INIT INFO
+# Provides:          hadoop-yarn
+# Short-Description: Hadoop YARN
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+### END INIT INFO
+
+. /etc/init.d/functions
+
+start() {
+        echo -n "Starting Hadoop YARN: "
+        ssh node2 '$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager'
+        ssh node2 '$HADOOP_YARN_HOME/sbin/yarn-daemons.sh --config $HADOOP_CONF_DIR start nodemanager'
+        ssh node2 '$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start proxyserver'
+        ssh node2 '$HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver'
+}
+
+stop() {
+        echo -n "Shutting down Hadoop YARN: "
+        ssh node2 '$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR stop resourcemanager'
+        ssh node2 '$HADOOP_YARN_HOME/sbin/yarn-daemons.sh --config $HADOOP_CONF_DIR stop nodemanager'
+        ssh node2 '$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR stop proxyserver'
+        ssh node2 '$HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR stop historyserver'
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        ;;
+    condrestart)
+        ;;
+    probe)
+        ;;
+    *)
+        echo "Usage: spark-master {start|stop|status|reload|restart[|probe]"
+        exit 1
+        ;;
+esac
+exit $?

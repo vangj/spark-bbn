@@ -1,0 +1,52 @@
+#!/bin/bash
+# chkconfig: 345 85 15
+# description: Hadoop HDFS
+### BEGIN INIT INFO
+# Provides:          hadoop-hdfs
+# Short-Description: Hadoop HDFS
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+### END INIT INFO
+
+. /etc/init.d/functions
+
+HADOOP_PREFIX=/usr/local/hadoop
+HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
+
+start() {
+        echo -n "Starting Hadoop HDFS: "
+        $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+        $HADOOP_PREFIX/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+}
+
+stop() {
+        echo -n "Shutting down Hadoop HDFS: "
+        $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs stop namenode
+        $HADOOP_PREFIX/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs stop datanode
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        ;;
+    condrestart)
+        ;;
+    probe)
+        ;;
+    *)
+        echo "Usage: spark-master {start|stop|status|reload|restart[|probe]"
+        exit 1
+        ;;
+esac
+exit $?

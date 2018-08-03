@@ -1,0 +1,51 @@
+#!/bin/bash
+# chkconfig: 345 85 15
+# description: Spark
+### BEGIN INIT INFO
+# Provides:          spark
+# Short-Description: Spark
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+### END INIT INFO
+
+. /etc/init.d/functions
+
+SPARK_HOME=/usr/local/spark
+
+start() {
+        echo -n "Starting Spark master: "
+        $SPARK_HOME/sbin/start-all.sh
+        $SPARK_HOME/sbin/start-history-server.sh
+}
+
+stop() {
+        echo -n "Shutting down Spark master: "
+        $SPARK_HOME/sbin/stop-all.sh
+        $SPARK_HOME/sbin/stop-history-server.sh
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        ;;
+    condrestart)
+        ;;
+    probe)
+        ;;
+    *)
+        echo "Usage: spark-master {start|stop|status|reload|restart[|probe]"
+        exit 1
+        ;;
+esac
+exit $?
