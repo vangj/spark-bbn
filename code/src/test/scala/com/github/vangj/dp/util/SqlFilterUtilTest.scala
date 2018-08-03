@@ -1,6 +1,6 @@
 package com.github.vangj.dp.util
 
-import com.github.vangj.dp.model.{Variable}
+import com.github.vangj.dp.model.Variable
 import org.scalatest.{FlatSpec, Matchers}
 
 class SqlFilterUtilTest extends FlatSpec with Matchers {

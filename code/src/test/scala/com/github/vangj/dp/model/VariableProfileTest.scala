@@ -1,8 +1,8 @@
 package com.github.vangj.dp.model
 
-import org.scalatest.{FlatSpec, Matchers}
 import org.json4s.JsonDSL._
 import org.json4s.jackson.JsonMethods._
+import org.scalatest.{FlatSpec, Matchers}
 
 import scala.io.Source
 

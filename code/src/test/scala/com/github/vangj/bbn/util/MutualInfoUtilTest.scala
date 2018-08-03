@@ -3,7 +3,7 @@ package com.github.vangj.bbn.util
 import com.github.vangj.bbn.util.MutualInfoUtil.{Combo, Counts, Index}
 import com.github.vangj.bbn.util.MutualInfoUtilTest.DataRow
 import com.holdenkarau.spark.testing.SharedSparkContext
-import org.apache.spark.sql.{SQLContext, SparkSession}
+import org.apache.spark.sql.SparkSession
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.mutable.ArrayBuffer

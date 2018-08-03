@@ -1,11 +1,10 @@
 package com.github.vangj.dp.tool
 
 import com.github.vangj.dp.factory.DataFrameFactory
-import com.github.vangj.dp.model.Message
 import com.github.vangj.dp.util.ProfileUtil
 import org.apache.log4j.LogManager
-import org.apache.spark.sql.SparkSession
 import org.apache.spark.SparkConf
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.storage.StorageLevel
 import org.json4s.JsonDSL._
 import org.json4s.jackson.JsonMethods._

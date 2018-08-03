@@ -1,11 +1,10 @@
 package com.github.vangj.dp.tool
 
 import com.github.vangj.dp.factory.DataFrameFactory
-import com.github.vangj.dp.model.Message
 import com.github.vangj.dp.option.CsvParseOptions
 import org.apache.log4j.LogManager
+import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * Converts data to parquet format.

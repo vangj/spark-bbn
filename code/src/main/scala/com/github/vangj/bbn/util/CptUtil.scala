@@ -4,7 +4,7 @@ import com.github.vangj.bbn.graph.{Bbn, Cpt}
 import com.github.vangj.dp.model.Variable
 import com.github.vangj.dp.model.filter.CptQueryPlan
 import com.github.vangj.dp.util.{ProfileUtil, SqlFilterUtil}
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.DataFrame
 
 import scala.collection.mutable
 
