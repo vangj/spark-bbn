@@ -6,11 +6,11 @@ lazy val commonSettings = Seq(
   scalaVersion := "2.11.8",
   publishMavenStyle := true,
   publishTo := {
-    val nexus = "https://oss.sonatype.org/content/"
+    val nexus = "https://oss.sonatype.org/"
     if (isSnapshot.value)
-      Some("snapshots" at nexus + "repository/snapshots")
+      Some("snapshots" at nexus + "content/repositories/snapshots")
     else
-      Some("releases"  at nexus + "repository/releases")
+      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
   },
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },
@@ -51,7 +51,7 @@ lazy val commonDeps = Seq(
 lazy val app = (project in file("."))
   .settings(commonSettings: _*)
   .settings(pgpPassphrase := scala.util.Properties.envOrNone("gpgpassphrase").map(_.toCharArray))
-  .settings(name := "dq-spark")
+  .settings(name := "spark-bbn")
   .settings(libraryDependencies ++= commonDeps)
   .settings(parallelExecution in Test := false)
   .settings(javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:MaxPermSize=2048M", "-XX:+CMSClassUnloadingEnabled"))
