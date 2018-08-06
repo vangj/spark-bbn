@@ -13,9 +13,13 @@ import org.apache.spark.storage.StorageLevel
 /**
   * Learns a singly-connected BBN.
   * <ul>
-  *   <li>i: hdfs path of parquet file used as input</li>
-  *   <li>o: hdfs path used as output</li>
-  *   <li>omi: hdfs path used as output for mutual information</li>
+  *   <li>i: HDFS path of CSV file used as input.</li>
+  *   <li>hasHeaders: A boolean indicating if the CSV file has headers. Optional.</li>
+  *   <li>delimiter: The CSV delimiter. Default is comma. Optional.</li>
+  *   <li>quote: The CSV quote character. Default is double quotes. Optional.</li>
+  *   <li>escape: The CSV escape character. Default is backslash. Optional.</li>
+  *   <li>o: HDFS path used as output for graph (JSON format).</li>
+  *   <li>omi: HDFS path used as output for mutual information (JSON format).</li>
   *  </ul>
   */
 object BbnMstLearner {
