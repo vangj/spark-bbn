@@ -12,9 +12,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			ipaddr = i < 10 ? "10.211.55.10#{i}" : "10.211.55.1#{i}"
 			nodename = "node#{i}"
 			
-			node.vm.provider "virtualbox" do |v|
-			  v.name = "#{nodename}"
-			  v.customize ["modifyvm", :id, "--memory", "2048"]
+			if i > 1
+				node.vm.provider "virtualbox" do |v|
+					v.name = "#{nodename}"
+					v.customize ["modifyvm", :id, "--memory", "2048"]
+				end
+			else
+				node.vm.provider "virtualbox" do |v|
+					v.name = "#{nodename}"
+					v.customize ["modifyvm", :id, "--memory", "3072"]
+				end
 			end
 			
 			node.vm.network :private_network, ip: "#{ipaddr}"
