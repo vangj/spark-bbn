@@ -32,7 +32,7 @@ You will have to have the following files in the  `/resources` directory.
 4. /resources/sshpass-1.05-1.el6.rf.x86_64.rpm [click here](https://rpmfind.net/linux/dag/redhat/el6/en/x86_64/dag/RPMS/sshpass-1.05-1.el6.rf.x86_64.rpm)
 
 # Make sure YARN and Spark jobs can run
-I typically run the following tests after post-provisioning on node1 (as root user). 
+I typically run the following tests after post-provisioning on node1 (as `root` or the `vagrant` user). 
 
 ```
 vagrant ssh node1
