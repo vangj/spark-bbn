@@ -83,8 +83,6 @@ You need to add an entry to your hosts file, as we will be referencing the vm by
 10.211.55.102 node2
 10.211.55.103 node3
 10.211.55.104 node4
-10.211.55.105 node5
-10.211.55.106 node6
 ```
 
 # Web UI
