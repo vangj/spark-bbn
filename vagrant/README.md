@@ -26,10 +26,10 @@ If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfil
 # Requirements of Artifacts
 You will have to have the following files in the  `/resources` directory.
 
-1. /resources/hadoop-2.7.3.tar.gz
-2. /resources/spark-2.1.0-bin-hadoop2.7.tgz
-3. /resources/jdk-8u65-linux-x64.gz
-4. /resources/sshpass-1.05-1.el6.rf.x86_64.rpm
+1. /resources/hadoop-2.7.3.tar.gz [click here](https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz)
+2. /resources/spark-2.1.0-bin-hadoop2.7.tgz [click here](https://archive.apache.org/dist/spark/spark-2.1.0/spark-2.1.0-bin-hadoop2.7.tgz)
+3. /resources/jdk-8u65-linux-x64.gz [click here](http://download.oracle.com/otn/java/jdk/8u65-b17/jdk-8u65-linux-x64.tar.gz)
+4. /resources/sshpass-1.05-1.el6.rf.x86_64.rpm [click here](https://rpmfind.net/linux/dag/redhat/el6/en/x86_64/dag/RPMS/sshpass-1.05-1.el6.rf.x86_64.rpm)
 
 # Make sure YARN and Spark jobs can run
 I typically run the following tests after post-provisioning on node1 (as root user). 
