@@ -30,8 +30,8 @@ sbt coverageReport
 # Citation
 
 ```
-@misc{vang_spark_bbn_2018, 
-title={Spark BBN}, 
+@misc{vang_spark_bbn_code_2018, 
+title={Spark BBN Code}, 
 url={https://github.com/vangj/spark-bbn/code/}, 
 journal={GitHub},
 author={Vang, Jee}, 
