@@ -34,6 +34,10 @@ You will have to have the following files in the  `/resources` directory.
 # Make sure YARN and Spark jobs can run
 I typically run the following tests after post-provisioning on node1 (as root user). 
 
+```
+vagrant ssh node1
+```
+
 ## Test YARN
 Run the following command to make sure you can run a MapReduce job.
 
