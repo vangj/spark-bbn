@@ -21,8 +21,7 @@ function startYarn {
 }
 
 function createEventLogDir {
-	$HADOOP_PREFIX/bin/hdfs dfs -mkdir /tmp
-	$HADOOP_PREFIX/bin/hdfs dfs -mkdir /tmp/spark-events
+	$HADOOP_PREFIX/bin/hdfs dfs -mkdir -p /tmp/spark-events
 	echo "created spark event log dir"
 }
 
@@ -32,8 +31,16 @@ function startSpark {
 	echo "started spark"
 }
 
+function copyData {
+	echo "copying over data files"
+	cp -f /vagrant/data/* /home/vagrant/
+	$HADOOP_PREFIX/bin/hdfs dfs -mkdir -p /user/vagrant/data
+	$HADOOP_PREFIX/bin/hdfs dfs -copyFromLocal /home/vagrant/data-1479668986461.csv /user/vagrant/data
+}
+
 formatNameNode
 startHDFS
 startYarn
 createEventLogDir
 startSpark
+copyData

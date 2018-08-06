@@ -1,3 +1,4 @@
 resources/
 /.vagrant
 pom.xml
+spark-bbn-*.jar
