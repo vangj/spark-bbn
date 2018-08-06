@@ -3,6 +3,7 @@ package com.github.vangj.bbn.tool
 import com.github.vangj.bbn.graph.factory.{BbnFactory, JsonBbnFactory}
 import com.github.vangj.bbn.util.MutualInfoUtil
 import com.github.vangj.dp.factory.DataFrameFactory
+import com.github.vangj.dp.option.CsvParseOptions
 import com.github.vangj.dp.util.ProfileUtil
 import org.apache.log4j.LogManager
 import org.apache.spark.SparkConf
@@ -20,12 +21,23 @@ import org.apache.spark.storage.StorageLevel
 object BbnMstLearner {
   @transient lazy val logger = LogManager.getLogger(BbnMstLearner.getClass)
 
-  case class Config(i: String = "", o: String = "", omi: String = "")
+  case class Config(
+                     i: String = "",
+                     hasHeaders: Boolean = true,
+                     delimiter: Char = ',',
+                     quote: Char = '"',
+                     escape: Char = '\\',
+                     o: String = "",
+                     omi: String = "")
 
   def main(args: Array[String]): Unit = {
     val parser = new scopt.OptionParser[Config]("BbnMstLearner") {
       head("BbnMstLearner", "0.0.1")
       opt[String]("i").required().action( (x, c) => c.copy(i = x)).text("input csv file")
+      opt[Boolean](name = "header").optional().action((x, c) => c.copy(hasHeaders = x)).text("csv has header?")
+      opt[String](name = "delim").optional().action((x, c) => c.copy(delimiter = x.charAt(0))).text("delimiter character")
+      opt[String](name = "quote").optional().action((x, c) => c.copy(quote = x.charAt(0))).text("quote character")
+      opt[String](name = "escape").optional().action((x, c) => c.copy(escape = x.charAt(0))).text("escape character")
       opt[String]("o").required().action( (x, c) => c.copy(o = x)).text("output hdfs directory")
       opt[String]("omi").required().action( (x, c) => c.copy(omi = x)).text("output hdfs directory for mutual infos")
     }
@@ -34,13 +46,15 @@ object BbnMstLearner {
       case Some(config) =>
         try {
           val conf = new SparkConf()
-            .setAppName(s"learning singly-connected dag from (parquet) ${config.i} to (hdfs) ${config.o} and ${config.omi}")
+            .setAppName(s"learning singly-connected dag from (csv) ${config.i} to (hdfs) ${config.o} and ${config.omi}")
           val spark = SparkSession
             .builder()
             .config(conf)
             .getOrCreate()
 
-          val df = DataFrameFactory.getDataFrame(config.i, spark.sqlContext)
+          val csvParseOptions = CsvParseOptions(config.hasHeaders, config.delimiter, config.quote, config.escape)
+          val rdd = spark.sparkContext.textFile(config.i)
+          val df = DataFrameFactory.getDataFrame(csvParseOptions, rdd, spark.sparkContext)
           val allMis = MutualInfoUtil.getMis(df)
           val mis = allMis
             .filter(item => if (item._2._1 == item._2._2) false else true)

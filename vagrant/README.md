@@ -74,6 +74,25 @@ $SPARK_HOME/bin/spark-shell --master spark://node1:7077
 
 Then go here https://spark.apache.org/docs/latest/quick-start.html to start the tutorial. Most likely, you will have to load data into HDFS to make the tutorial work (Spark cannot read data on the local file system).
 
+## Test Spark-BBN
+Assuming you have built the Spark-BBN artifact in the `code/target/scala-2.11/spark-bbn-assembly-0.0.1-SNAPSHOT.jar` directory, copy it over. For example, in the `vagrant` directory, type in `cp -f ../code/target/scala-2.11/spark-bbn-assembly-0.0.1-SNAPSHOT.jar data/`. Or, after the virtual cluster has been created, you may SCP `scp ../code/target/scala-2.11/spark-bbn-assembly-0.0.1-SNAPSHOT.jar vagrant@node1:/home/vagrant`.
+
+```
+$SPARK_HOME/bin/spark-submit --class com.github.vangj.bbn.tool.BbnMstLearner \
+    --master spark://node1:7077 \
+    spark-bbn-assembly-0.0.1-SNAPSHOT.jar \
+    --i /user/vagrant/data/data-1479668986461.csv \
+    --o /tmp/001-graph \
+    --omi /tmp/001-mi
+```
+
+To remove the output directories.
+
+```
+hdfs dfs -rm -r /tmp/001-graph
+hdfs dfs -rm -r /tmp/001-mi
+```
+
 # Modify /etc/hosts file
 
 You need to add an entry to your hosts file, as we will be referencing the vm by name.
