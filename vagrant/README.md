@@ -4,8 +4,8 @@
 
 Vagrant project to spin up a cluster of 4 virtual machines with Hadoop v2.7.3 and Spark v2.1.0.
 
-1. node1 : HDFS NameNode + Spark Master
-2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer
+1. node1 : HDFS NameNode + YARN ResourceManager + JobHistoryServer + ProxyServer + Spark Master
+2. node2 : HDFS DataNode + YARN NodeManager + Spark Slave
 3. node3 : HDFS DataNode + YARN NodeManager + Spark Slave
 4. node4 : HDFS DataNode + YARN NodeManager + Spark Slave
 
@@ -89,8 +89,8 @@ You need to add an entry to your hosts file, as we will be referencing the vm by
 You can check the following URLs to monitor the Hadoop daemons.
 
 1. [NameNode](http://node1:50070/dfshealth.html)
-2. [ResourceManager](http://node2:8088/cluster)
-3. [JobHistory](http://node2:19888/jobhistory)
+2. [ResourceManager](http://node1:8088/cluster)
+3. [JobHistory](http://node1:19888/jobhistory)
 4. [Spark](http://node1:8080)
 5. [Spark History](http://node1:18080)
 

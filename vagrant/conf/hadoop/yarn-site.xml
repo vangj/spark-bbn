@@ -33,22 +33,22 @@
  -->
  <property>
   <name>yarn.log.server.url</name>
-  <value>http://node2:19888/jobhistory/logs/</value>
+  <value>http://node1:19888/jobhistory/logs/</value>
  </property>
  <property>
   <name>yarn.web-proxy.address</name>
-  <value>node2:8089</value>
+  <value>node1:8089</value>
  </property>
  <property>
   <name>yarn.resourcemanager.hostname</name>
-  <value>node2</value>
+  <value>node1</value>
  </property>
  <property>
   <name>yarn.resourcemanager.address</name>
-  <value>node2:8032</value>
+  <value>node1:8032</value>
  </property>
  <property>
   <name>yarn.timeline-service.hostname</name>
-  <value>node2</value>
+  <value>node1</value>
  </property>
 </configuration>
