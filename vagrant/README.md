@@ -90,11 +90,11 @@ You need to add an entry to your hosts file, as we will be referencing the vm by
 # Web UI
 You can check the following URLs to monitor the Hadoop daemons.
 
-1. [NameNode] (http://node1:50070/dfshealth.html)
-2. [ResourceManager] (http://node2:8088/cluster)
-3. [JobHistory] (http://node2:19888/jobhistory)
-4. [Spark] (http://node1:8080)
-5. [Spark History] (http://node1:18080)
+1. [NameNode](http://node1:50070/dfshealth.html)
+2. [ResourceManager](http://node2:8088/cluster)
+3. [JobHistory](http://node2:19888/jobhistory)
+4. [Spark](http://node1:8080)
+5. [Spark History](http://node1:18080)
 
 # Vagrant boxes
 A list of available Vagrant boxes is shown at http://www.vagrantbox.es. 
