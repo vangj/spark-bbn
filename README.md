@@ -25,6 +25,9 @@ $SPARK_HOME/bin/spark-submit --class com.github.vangj.bbn.tool.BbnMstLearner \
     --o /path/to/graph-output-folder \
     --omi /path/to/mutual-information-output-folder
 ```
+
+You may copy and paste the output of the JSON graph directly into [this example](https://run.plnkr.co/plunks/GFcem156HC2EwRECmtyH/) and visualize the BBN via [jsbayes-viz](https://github.com/vangj/jsbayes-viz).
+
 # Citation
 
 ```
