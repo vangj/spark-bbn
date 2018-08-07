@@ -2,3 +2,4 @@ target/
 .idea/
 spark-warehouse/
 spark-bbn.iml
+.ipynb_checkpoints/
